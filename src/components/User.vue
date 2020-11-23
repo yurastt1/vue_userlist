@@ -3,7 +3,7 @@
     <td>{{ user.name }}</td>
     <td>{{ user.surname }}</td>
     <td>{{ user.email }}</td>
-    <td><button @click="log">settings</button></td>
+    <td><b-button @click="log" variant="outline-primary">Props</b-button></td>
   </tr>
 </template>
 

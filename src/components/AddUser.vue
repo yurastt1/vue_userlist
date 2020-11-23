@@ -1,18 +1,27 @@
 <template>
   <div> 
-    <button @click="showModal = !showModal">Add user</button>
-    <form v-show="showModal" @submit.prevent="onSubmit">
-      <label>Name:<input type="text" v-model="name"></label>
-      <label>Surname:<input type="text" v-model="surname"></label>
-      <label>Email:
-        <input 
-          type="text" 
-          v-model="email" 
-          :class="{invalid: ($v.email.$dirty && !$v.email.required)
-            || ($v.email.$dirty && !$v.email.email)}">
-      </label>
-      <button type="Submit">Add user</button>
-    </form>
+     <b-button v-b-modal.modal-1 variant="outline-primary">Add user</b-button>
+      <b-modal id="modal-1" title="User">
+        <b-form v-show="showModal" @submit.prevent="onSubmit">
+          <b-form-group>
+            <label>Name:<b-form-input  type="text" v-model="name"></b-form-input></label>
+          </b-form-group>
+          <b-form-group>
+            <label>Surname:<b-form-input type="text" v-model="surname"></b-form-input></label>
+          </b-form-group>
+          <b-form-group>
+          <label>Email:
+            <b-form-input
+              type="text" 
+              v-model="email" 
+              :class="{invalid: ($v.email.$dirty && !$v.email.required)
+                || ($v.email.$dirty && !$v.email.email)}">
+            </b-form-input>
+          </label>
+          </b-form-group>
+          <b-button type="Submit" variant="primary">Add user</b-button>
+        </b-form>
+      </b-modal>
     </div>
 </template>
 
@@ -25,7 +34,7 @@ export default {
       name: '',
       surname: '',
       email: '',  
-      showModal: false
+      showModal: true
     }
   },
   validations: {

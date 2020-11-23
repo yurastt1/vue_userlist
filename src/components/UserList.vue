@@ -1,12 +1,17 @@
 <template>
   <div>
-    <table>
+    <table class="table table-striped">
+    <thead>
       <tr>
         <th>Firstname</th>
         <th>Lastname</th>
-        <th>Age</th>
+        <th>Email</th>
+        <th>Properties</th>
       </tr>
+    </thead>
+    <tbody>
       <User @deleteuser="deleteuser" v-for="(user, index) in this.users" :user="user" :index="index" :key="user.id"></User>  
+    </tbody>
     </table>
   </div> 
 </template>

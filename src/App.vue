@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <UserList :users="users" :deleteuser="deleteuser" />
     <AddUser @adduser="adduser" />
+    <UserList :users="users" :deleteuser="deleteuser" />
   </div>
 </template>
 
@@ -43,7 +43,7 @@ export default {
        this.saveusers();
       // changing props below and it works
       // (this.users.find(element => element.id === id).name = "swat");
-    }
+    },
   }
 }
 </script>
