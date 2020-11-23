@@ -12,7 +12,7 @@ export default {
   methods: {
     log() {
       console.log(this.index, this.user);
-      this.$emit('deleteuser', this.index)
+      this.$emit('usersettings', this.index)
     },
   },
   props: {

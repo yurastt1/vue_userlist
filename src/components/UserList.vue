@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <User @deleteuser="deleteuser" v-for="(user, index) in this.users" :user="user" :index="index" :key="user.id"></User>  
+      <User @usersettings="usersettings" v-for="(user, index) in this.users" :user="user" :index="index" :key="user.id"></User>  
     </tbody>
     </table>
   </div> 
@@ -27,7 +27,7 @@ export default {
       type: Array,
       required: true
     },
-    deleteuser: {
+    usersettings: {
       type: Function,
     }
   }

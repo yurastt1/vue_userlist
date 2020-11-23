@@ -1,19 +1,23 @@
 <template>
   <div id="app">
+    <UserSettings v-if="showSettings" :showSettings="showSettings" :user="currentUser" @changeSettings="changeSettings" />
     <AddUser @adduser="adduser" />
-    <UserList :users="users" :deleteuser="deleteuser" />
+    <UserList :users="users" :usersettings="usersettings" />
   </div>
 </template>
 
 <script>
 import AddUser from './components/AddUser'
 import UserList from './components/UserList'
+import UserSettings from './components/UserSettings'
 
 export default {
   name: 'App',
   data() {
     return {
-      users: [{name: "lolly", surname: "popa", email:"jopa"}]
+      users: [],
+      showSettings: false,
+      currentUser: {}
     }
   },
   mounted() {
@@ -28,6 +32,7 @@ export default {
   components: {
     AddUser,
     UserList,
+    UserSettings,
   },
   methods: {
     saveusers() {
@@ -41,9 +46,17 @@ export default {
     deleteuser(index) {
        this.users.splice(index, 1);
        this.saveusers();
-      // changing props below and it works
-      // (this.users.find(element => element.id === id).name = "swat");
     },
+    usersettings(index) {
+      this.showSettings = !this.showSettings
+      this.currentUser = { ...this.users[index], index: index }
+    },
+    changeSettings(user) {
+      this.users[user.index].name = user.name;
+      this.users[user.index].surname = user.surname;
+      this.users[user.index].email = user.email;
+      this.saveusers();
+    }
   }
 }
 </script>
