@@ -1,17 +1,49 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <UserList :users="users" :deleteuser="deleteuser" />
+    <AddUser @adduser="adduser" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AddUser from './components/AddUser'
+import UserList from './components/UserList'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      users: [{name: "lolly", surname: "popa", email:"jopa"}]
+    }
+  },
+  mounted() {
+    if (localStorage.getItem('users')) {
+      try {
+        this.users = JSON.parse(localStorage.getItem('users'));
+      } catch (e) {
+        localStorage.removeItem('users')
+      }
+    }
+  },
   components: {
-    HelloWorld
+    AddUser,
+    UserList,
+  },
+  methods: {
+    saveusers() {
+      let parsed = JSON.stringify(this.users)
+      localStorage.setItem('users', parsed)
+    },
+    adduser(user) {
+      this.users.push(user);
+      this.saveusers();
+    },
+    deleteuser(index) {
+       this.users.splice(index, 1);
+       this.saveusers();
+      // changing props below and it works
+      // (this.users.find(element => element.id === id).name = "swat");
+    }
   }
 }
 </script>
