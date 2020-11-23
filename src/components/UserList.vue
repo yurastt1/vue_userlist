@@ -3,6 +3,7 @@
     <table class="table table-striped">
     <thead>
       <tr>
+        <th></th>
         <th>Firstname</th>
         <th>Lastname</th>
         <th>Email</th>
@@ -10,7 +11,14 @@
       </tr>
     </thead>
     <tbody>
-      <User @usersettings="usersettings" v-for="(user, index) in this.users" :user="user" :index="index" :key="user.id"></User>  
+      <User 
+        @usersettings="usersettings"
+        @deleteuser="deleteuser"
+        v-for="(user, index)
+        in this.users" :user="user" 
+        :index="index" 
+        :key="user.id"
+      />  
     </tbody>
     </table>
   </div> 
@@ -29,6 +37,9 @@ export default {
     },
     usersettings: {
       type: Function,
+    },
+    deleteuser: {
+      type: Function
     }
   }
 }

@@ -2,7 +2,7 @@
   <div id="app">
     <UserSettings v-if="showSettings" :showSettings="showSettings" :user="currentUser" @changeSettings="changeSettings" />
     <AddUser @adduser="adduser" />
-    <UserList :users="users" :usersettings="usersettings" />
+    <UserList :users="users" :usersettings="usersettings" :deleteuser="deleteuser" />
   </div>
 </template>
 
