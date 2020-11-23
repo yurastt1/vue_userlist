@@ -1,7 +1,7 @@
 <template>
   <div> 
      <b-button v-b-modal.modal-1 variant="outline-primary">Add user</b-button>
-      <b-modal id="modal-1" title="User">
+      <b-modal id="modal-1" title="Add user">
         <b-form v-show="showModal" @submit.prevent="onSubmit">
           <b-form-group
             id="input-group-1"

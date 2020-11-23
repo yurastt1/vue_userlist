@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    <UserSettings v-if="showSettings" :showSettings="showSettings" :user="currentUser" @changeSettings="changeSettings" />
+    <UserSettings 
+      v-if="showSettings"
+      :showSettings="showSettings"
+      :user="currentUser"
+      @changeSettings="changeSettings"
+      @modalclosed="modalclosed"
+    />
     <AddUser @adduser="adduser" />
     <UserList :users="users" :usersettings="usersettings" :deleteuser="deleteuser" />
   </div>
@@ -56,6 +62,9 @@ export default {
       this.users[user.index].surname = user.surname;
       this.users[user.index].email = user.email;
       this.saveusers();
+    },
+    modalclosed() {
+      this.showSettings = !this.showSettings
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-modal no-close-on-backdrop id="modal-2" title="Change settings">
+    <b-modal no-close-on-backdrop id="modal-2" title="Change settings" @hide="handleClose" >
       <b-form @submit.prevent="onSubmit">
         <b-form-group
             id="input-group-1"
@@ -68,6 +68,9 @@ export default {
       }
 
       this.$emit('changeSettings', user)
+    },
+    handleClose() {
+      this.$emit('modalclosed')
     }
   },
   validations: {
