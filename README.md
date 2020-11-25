@@ -1,24 +1,9 @@
-# testtask_try100
+# Vue_userlist
 
-## Project setup
-```
-npm install
-```
+[DEMO](https://yurastt1.github.io/vue_userlist/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Clicking Add user you will recieve modal window with form to add user.
+Delete user by clicking button on the left.
+Change user properties by clicking settings button.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+All users are saved locally.
